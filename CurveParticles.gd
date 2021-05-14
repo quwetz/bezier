@@ -16,5 +16,4 @@ func _ready():
 
 
 func _on_Timer_timeout():
-	print("foo")
 	queue_free()
