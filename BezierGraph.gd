@@ -71,20 +71,10 @@ func _unhandled_input(event):
 		if event is InputEventMouseButton:
 			if event.button_index == BUTTON_LEFT and event.pressed:
 				add_node()
+				Globals.call_deferred("emit_signal", "new_node_added")
 				get_tree().set_input_as_handled()
 		elif event is InputEventScreenTouch:
 			if event.pressed and event.get_index() == 0:
 				add_node()
-				get_tree().set_input_as_handled()
-
-
-func _on_Background_input_event(viewport, event, shape_idx):
-	if is_root:
-		if event is InputEventMouseButton:
-			if event.button_index == BUTTON_LEFT and event.pressed:
-				add_node()
-				get_tree().set_input_as_handled()
-		elif event is InputEventScreenTouch:
-			if event.pressed and event.get_index() == 0:
-				add_node()
+				Globals.call_deferred("emit_signal", "new_node_added")
 				get_tree().set_input_as_handled()

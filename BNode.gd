@@ -37,7 +37,7 @@ func update_position():
 
 func move_node(delta):
 	var screensize = OS.get_window_size()
-	global_position += velocity * Globals.speed * delta
+	global_position += velocity * Globals.node_speed * delta
 	if global_position.x < 0 or global_position.x > screensize.x:
 		velocity.x *= -1.0
 	if global_position.y < 0 or global_position.y > screensize.y:
