@@ -1,7 +1,8 @@
-extends Node2D
+extends Area2D
 
 
-var is_root_node: bool = false
+var is_root_node: bool = false setget set_is_root_node
+var is_draw_node: bool = true setget set_is_draw_node
 var dragging: bool = false
 var prev: Node2D setget set_prev
 var next: Node2D setget set_next
@@ -29,6 +30,7 @@ func _process(delta):
 	update_position()
 	var screensize = OS.get_window_size()
 	global_position = Vector2(clamp(global_position.x, 0, screensize.x), clamp(global_position.y, 0, screensize.y))
+		
 
 func update_position():
 	if not is_root_node:
@@ -83,10 +85,28 @@ func set_prev(value):
 	prev = value
 	if prev != null:
 		prev.next = self
+		self.is_draw_node = false
 
 
 func set_next(value):
 	next = value
+	self.is_draw_node = false
+	
+
+func set_is_draw_node(value):
+	is_draw_node = value
+	if is_draw_node:
+		monitoring = true
+	elif not is_root_node:
+		monitoring = false
+		
+
+func set_is_root_node(value):
+	is_root_node = value
+	if is_root_node:
+		monitoring = true
+	elif not is_draw_node:
+		monitoring = false
 
 
 func _input(event):
@@ -117,3 +137,7 @@ func _on_Timer_timeout():
 			get_parent().add_child(line_segment)
 		$Timer.start(0.01)
 		last_pos = global_position
+
+
+func _on_BNode_body_entered(body):
+	Globals.emit_signal("game_over")

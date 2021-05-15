@@ -33,11 +33,12 @@ func clear():
 	nodes.clear()
 
 
-func add_node() -> Node2D:
+func add_node(pos) -> Node2D:
 	var bnode: Node2D = BNode.instance()
 	
 	if is_root:
 		bnode.is_root_node = true
+		bnode.global_position = pos
 	
 	if nodes.size() > 0:
 		bnode.prev = nodes[nodes.size() - 1]
@@ -47,7 +48,6 @@ func add_node() -> Node2D:
 	
 	nodes.append(bnode)
 	add_child(bnode)
-	bnode.global_position = get_global_mouse_position()
 	return bnode
 	
 	
@@ -55,7 +55,7 @@ func create_subdivisions(parent_min, parent_max):
 	if subdivision == null:
 		instance_sub_graph()
 		
-	var new_node: Node2D = subdivision.add_node()
+	var new_node: Node2D = subdivision.add_node(null)
 	new_node.parent_min = parent_min
 	new_node.parent_max = parent_max
 	
@@ -66,15 +66,16 @@ func instance_sub_graph():
 	subdivision.is_root = false
 	add_child(subdivision)
 
+
 func _unhandled_input(event):
-	if is_root:
+	if is_root and not Globals.game_is_running:
 		if event is InputEventMouseButton:
 			if event.button_index == BUTTON_LEFT and event.pressed:
-				add_node()
+				add_node(get_global_mouse_position())
 				Globals.call_deferred("emit_signal", "new_node_added")
 				get_tree().set_input_as_handled()
 		elif event is InputEventScreenTouch:
 			if event.pressed and event.get_index() == 0:
-				add_node()
+				add_node(get_global_mouse_position())
 				Globals.call_deferred("emit_signal", "new_node_added")
 				get_tree().set_input_as_handled()
