@@ -22,6 +22,7 @@ func _ready():
 	Globals.connect("game_started", self, "_on_game_started")
 	Globals.connect("game_ended", self, "_on_game_ended")
 	Globals.connect("highscore_set", self, "_on_highscore_set")
+	Globals.connect("reset_time", self, "_on_reset_time");
 
 
 func _process(delta):
@@ -32,6 +33,10 @@ func _process(delta):
 	var b = sin((time * 2 + 1.62) * 1.0) * 0.5 + 0.5
 	Globals.curve_color = Color(r,g,b,1.0)
 	
+	
+func _on_reset_time():
+	time = 0.0
+
 
 func _on_highscore_set():
 	$Highscore.text = "Highscore: " + str(Globals.high_score)

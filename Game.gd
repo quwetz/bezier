@@ -5,7 +5,7 @@ export var Enemy: PackedScene
 var score: int = 0 setget set_score
 var game_time: float = 0.0
 var newest_enemy: Node2D
-var new_enemy_threshold = 5
+var new_enemy_threshold = 2
 var new_node_threshold = 10
 
 var game_over = false
@@ -20,6 +20,8 @@ func _ready():
 	scoreTimer.start(1.0)
 	Globals.connect("game_over", self, "_on_game_over")
 	Globals.connect("t_near_zero_or_one", self, "_on_t_near_zero_or_one")
+	Globals.emit_signal("reset_time")
+	randomize()
 	
 
 
@@ -34,10 +36,10 @@ func set_score(value):
 	
 	if value == new_enemy_threshold:
 		on_t_zero_create_enemy = true
-		new_enemy_threshold += new_enemy_threshold
+		new_enemy_threshold += max(10, new_enemy_threshold)
 	if value == new_node_threshold:
 		on_t_zero_add_node = true
-		new_node_threshold += new_node_threshold * (value / 10)
+		new_node_threshold += max(5, new_node_threshold)
 
 	Globals.node_speed = min(value, 250)
 

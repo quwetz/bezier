@@ -8,6 +8,7 @@ signal game_ended
 signal game_over
 signal t_near_zero_or_one
 signal highscore_set
+signal reset_time
 
 var t: float = 0.0 setget set_t
 const ROOT_NODE_COLOR = Color.webgreen
