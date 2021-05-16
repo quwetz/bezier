@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://BezierGraph.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
 [ext_resource path="res://Options.gd" type="Script" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://Game.tscn" type="PackedScene" id=5]
+[ext_resource path="res://LicenseLink.gd" type="Script" id=6]
 
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
@@ -23,28 +24,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Options" type="Control" parent="."]
+[node name="Highscore" type="Label" parent="."]
+anchor_right = 0.882
+margin_right = 1.0
+margin_bottom = 40.0
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 visible = false
-margin_left = -3.98633
-margin_top = 33.4877
-margin_right = 36.0137
-margin_bottom = 73.4877
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.29736
+margin_top = 43.3191
+margin_right = -10.7026
+margin_bottom = 43.3191
+size_flags_horizontal = 3
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ShowLines" type="CheckBox" parent="Options"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 150.0
-margin_bottom = 29.0
+[node name="Options" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 93.0
+margin_bottom = 600.0
+size_flags_horizontal = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShowLines" type="CheckBox" parent="HBoxContainer/Options"]
+margin_right = 93.0
+margin_bottom = 24.0
 pressed = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Options/ShowLines"]
+[node name="Label" type="Label" parent="HBoxContainer/Options/ShowLines"]
 margin_left = 19.6001
 margin_top = 5.82706
 margin_right = 136.6
@@ -54,16 +73,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Screensaver" type="CheckBox" parent="Options"]
-margin_left = 5.0
-margin_top = 45.0
-margin_right = 144.0
-margin_bottom = 69.0
+[node name="Screensaver" type="CheckBox" parent="HBoxContainer/Options"]
+margin_top = 28.0
+margin_right = 93.0
+margin_bottom = 52.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Options/Screensaver"]
+[node name="Label" type="Label" parent="HBoxContainer/Options/Screensaver"]
 margin_left = 20.0
 margin_top = 6.0
 margin_right = 137.0
@@ -73,17 +91,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ShowNodes" type="CheckBox" parent="Options"]
-margin_left = 5.0
-margin_top = 25.0
-margin_right = 147.0
-margin_bottom = 49.0
+[node name="ShowNodes" type="CheckBox" parent="HBoxContainer/Options"]
+margin_top = 56.0
+margin_right = 93.0
+margin_bottom = 80.0
 pressed = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Options/ShowNodes"]
+[node name="Label" type="Label" parent="HBoxContainer/Options/ShowNodes"]
 margin_left = 20.0
 margin_top = 6.0
 margin_right = 137.0
@@ -94,37 +111,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ShowParticles" type="CheckBox" parent="Options"]
-margin_left = 5.0
-margin_top = 65.0
-margin_right = 142.0
-margin_bottom = 89.0
+[node name="ShowParticles" type="CheckBox" parent="HBoxContainer/Options"]
+margin_top = 84.0
+margin_right = 93.0
+margin_bottom = 108.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Options/ShowParticles"]
+[node name="Label" type="Label" parent="HBoxContainer/Options/ShowParticles"]
 margin_left = 21.7025
 margin_top = 5.81079
 margin_right = 76.7025
 margin_bottom = 19.8108
 text = "Particles"
 
-[node name="Clear" type="Button" parent="Options"]
-margin_left = 10.0
-margin_top = 93.0
-margin_right = 144.0
-margin_bottom = 113.0
+[node name="Clear" type="Button" parent="HBoxContainer/Options"]
+margin_top = 112.0
+margin_right = 93.0
+margin_bottom = 132.0
 text = "Clear"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CurveWidth" type="HSlider" parent="Options"]
-margin_left = 5.0
-margin_top = 142.0
-margin_right = 155.0
-margin_bottom = 162.0
+[node name="Label4" type="Label" parent="HBoxContainer/Options"]
+margin_top = 136.0
+margin_right = 93.0
+margin_bottom = 150.0
+text = "Line Width"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CurveWidth" type="HSlider" parent="HBoxContainer/Options"]
+margin_top = 154.0
+margin_right = 93.0
+margin_bottom = 170.0
 min_value = 1.0
 max_value = 50.0
 value = 2.0
@@ -132,19 +155,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Options/CurveWidth"]
-margin_top = -14.0
-margin_right = 40.0
-text = "Line Width"
+[node name="Label3" type="Label" parent="HBoxContainer/Options"]
+margin_top = 174.0
+margin_right = 93.0
+margin_bottom = 188.0
+text = "Curve Lifetime"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CurveLifetime" type="HSlider" parent="Options"]
-margin_left = 5.0
-margin_top = 182.0
-margin_right = 155.0
-margin_bottom = 202.0
+[node name="CurveLifetime" type="HSlider" parent="HBoxContainer/Options"]
+margin_top = 192.0
+margin_right = 93.0
+margin_bottom = 208.0
 min_value = 0.01
 max_value = 30.0
 step = 0.1
@@ -153,18 +176,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Options/CurveLifetime"]
-margin_top = -16.0
+[node name="Label2" type="Label" parent="HBoxContainer/Options"]
+margin_top = 212.0
 margin_right = 93.0
-margin_bottom = 15.0
-text = "Curve Lifetime
-"
+margin_bottom = 226.0
+text = "t Speed"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="tSpeed" type="HSlider" parent="Options"]
-margin_left = 5.0
-margin_top = 222.0
-margin_right = 155.0
-margin_bottom = 242.0
+[node name="tSpeed" type="HSlider" parent="HBoxContainer/Options"]
+margin_top = 230.0
+margin_right = 93.0
+margin_bottom = 246.0
 min_value = 0.5
 max_value = 5.0
 step = 0.1
@@ -173,17 +197,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Options/tSpeed"]
-margin_top = -16.0
+[node name="Label" type="Label" parent="HBoxContainer/Options"]
+margin_top = 250.0
 margin_right = 93.0
-margin_bottom = 15.0
-text = "t Speed"
+margin_bottom = 264.0
+text = "Node Speed"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="NodeSpeed" type="HSlider" parent="Options"]
-margin_left = 5.0
-margin_top = 262.0
-margin_right = 155.0
-margin_bottom = 282.0
+[node name="NodeSpeed" type="HSlider" parent="HBoxContainer/Options"]
+margin_top = 268.0
+margin_right = 93.0
+margin_bottom = 284.0
 min_value = 25.0
 max_value = 200.0
 value = 50.0
@@ -191,34 +217,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Options/NodeSpeed"]
-margin_top = -15.0
-margin_right = 40.0
-margin_bottom = -1.0
-text = "Node Speed"
-
-[node name="StartGame" type="Button" parent="Options"]
-margin_left = 5.0
-margin_top = 300.0
-margin_right = 146.0
-margin_bottom = 320.0
+[node name="StartGame" type="Button" parent="HBoxContainer/Options"]
+margin_top = 288.0
+margin_right = 93.0
+margin_bottom = 308.0
 text = "Start Game"
 
-[node name="Highscore" type="Label" parent="."]
-anchor_right = 0.882
-margin_right = 1.0
-margin_bottom = 40.0
-align = 2
+[node name="LicenseLink" type="LinkButton" parent="HBoxContainer"]
+margin_left = 958.0
+margin_right = 1007.0
+margin_bottom = 600.0
+text = "License"
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[connection signal="pressed" from="MenuButton" to="Options" method="_on_MenuButton_pressed"]
-[connection signal="toggled" from="MenuButton" to="Options" method="_on_MenuButton_toggled"]
-[connection signal="toggled" from="Options/ShowLines" to="." method="_on_ShowSubdivision_toggled"]
-[connection signal="toggled" from="Options/Screensaver" to="." method="_on_Screensaver_toggled"]
-[connection signal="toggled" from="Options/ShowNodes" to="." method="_on_ShowNodes_toggled"]
-[connection signal="toggled" from="Options/ShowParticles" to="." method="_on_ShowParticles_toggled"]
-[connection signal="pressed" from="Options/Clear" to="." method="_on_Clear_pressed"]
-[connection signal="value_changed" from="Options/CurveWidth" to="." method="_on_CurveWidth_value_changed"]
-[connection signal="value_changed" from="Options/CurveLifetime" to="." method="_on_CurveLifetime_value_changed"]
-[connection signal="value_changed" from="Options/tSpeed" to="." method="_on_tSpeed_value_changed"]
-[connection signal="value_changed" from="Options/NodeSpeed" to="." method="_on_NodeSpeed_value_changed"]
-[connection signal="pressed" from="Options/StartGame" to="." method="_on_StartGame_pressed"]
+[connection signal="pressed" from="MenuButton" to="HBoxContainer" method="_on_MenuButton_pressed"]
+[connection signal="toggled" from="HBoxContainer/Options/ShowLines" to="." method="_on_ShowSubdivision_toggled"]
+[connection signal="toggled" from="HBoxContainer/Options/Screensaver" to="." method="_on_Screensaver_toggled"]
+[connection signal="toggled" from="HBoxContainer/Options/ShowNodes" to="." method="_on_ShowNodes_toggled"]
+[connection signal="toggled" from="HBoxContainer/Options/ShowParticles" to="." method="_on_ShowParticles_toggled"]
+[connection signal="pressed" from="HBoxContainer/Options/Clear" to="." method="_on_Clear_pressed"]
+[connection signal="value_changed" from="HBoxContainer/Options/CurveWidth" to="." method="_on_CurveWidth_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/Options/CurveLifetime" to="." method="_on_CurveLifetime_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/Options/tSpeed" to="." method="_on_tSpeed_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/Options/NodeSpeed" to="." method="_on_NodeSpeed_value_changed"]
+[connection signal="pressed" from="HBoxContainer/Options/StartGame" to="." method="_on_StartGame_pressed"]
+[connection signal="pressed" from="HBoxContainer/LicenseLink" to="HBoxContainer/LicenseLink" method="_on_LicenseLink_pressed"]
