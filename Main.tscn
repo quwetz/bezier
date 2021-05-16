@@ -34,14 +34,12 @@ __meta__ = {
 }
 
 [node name="Options" type="VBoxContainer" parent="."]
-visible = false
-anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 6.0
 margin_top = 43.0
-margin_right = -917.0
+margin_right = -898.0
 margin_bottom = -1.0
-size_flags_horizontal = 3
+size_flags_horizontal = 2
 size_flags_vertical = 0
 script = ExtResource( 3 )
 __meta__ = {
@@ -49,7 +47,7 @@ __meta__ = {
 }
 
 [node name="Options" type="VBoxContainer" parent="Options"]
-margin_right = 101.0
+margin_right = 93.0
 margin_bottom = 538.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -58,7 +56,7 @@ __meta__ = {
 }
 
 [node name="ShowNodes" type="CheckBox" parent="Options/Options"]
-margin_right = 101.0
+margin_right = 93.0
 margin_bottom = 24.0
 pressed = true
 __meta__ = {
@@ -78,7 +76,7 @@ __meta__ = {
 
 [node name="ShowLines" type="CheckBox" parent="Options/Options"]
 margin_top = 28.0
-margin_right = 101.0
+margin_right = 93.0
 margin_bottom = 52.0
 pressed = true
 __meta__ = {
@@ -97,7 +95,7 @@ __meta__ = {
 
 [node name="Screensaver" type="CheckBox" parent="Options/Options"]
 margin_top = 56.0
-margin_right = 101.0
+margin_right = 93.0
 margin_bottom = 80.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -115,7 +113,7 @@ __meta__ = {
 
 [node name="ShowParticles" type="CheckBox" parent="Options/Options"]
 margin_top = 84.0
-margin_right = 101.0
+margin_right = 93.0
 margin_bottom = 108.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -130,7 +128,7 @@ text = "Particles"
 
 [node name="Clear" type="Button" parent="Options/Options"]
 margin_top = 112.0
-margin_right = 101.0
+margin_right = 93.0
 margin_bottom = 132.0
 text = "Clear"
 __meta__ = {
@@ -139,7 +137,7 @@ __meta__ = {
 
 [node name="Label4" type="Label" parent="Options/Options"]
 margin_top = 136.0
-margin_right = 101.0
+margin_right = 93.0
 margin_bottom = 150.0
 text = "Line Width"
 __meta__ = {
@@ -148,7 +146,7 @@ __meta__ = {
 
 [node name="CurveWidth" type="HSlider" parent="Options/Options"]
 margin_top = 154.0
-margin_right = 101.0
+margin_right = 93.0
 margin_bottom = 170.0
 min_value = 1.0
 max_value = 50.0
@@ -159,7 +157,7 @@ __meta__ = {
 
 [node name="Label3" type="Label" parent="Options/Options"]
 margin_top = 174.0
-margin_right = 101.0
+margin_right = 93.0
 margin_bottom = 188.0
 text = "Curve Lifetime"
 __meta__ = {
@@ -168,7 +166,7 @@ __meta__ = {
 
 [node name="CurveLifetime" type="HSlider" parent="Options/Options"]
 margin_top = 192.0
-margin_right = 101.0
+margin_right = 93.0
 margin_bottom = 208.0
 min_value = 0.01
 max_value = 30.0
@@ -180,7 +178,7 @@ __meta__ = {
 
 [node name="Label2" type="Label" parent="Options/Options"]
 margin_top = 212.0
-margin_right = 101.0
+margin_right = 93.0
 margin_bottom = 226.0
 text = "t Speed"
 __meta__ = {
@@ -189,7 +187,7 @@ __meta__ = {
 
 [node name="tSpeed" type="HSlider" parent="Options/Options"]
 margin_top = 230.0
-margin_right = 101.0
+margin_right = 93.0
 margin_bottom = 246.0
 min_value = 0.5
 max_value = 5.0
@@ -201,7 +199,7 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="Options/Options"]
 margin_top = 250.0
-margin_right = 101.0
+margin_right = 93.0
 margin_bottom = 264.0
 text = "Node Speed"
 __meta__ = {
@@ -210,7 +208,7 @@ __meta__ = {
 
 [node name="NodeSpeed" type="HSlider" parent="Options/Options"]
 margin_top = 268.0
-margin_right = 101.0
+margin_right = 93.0
 margin_bottom = 284.0
 min_value = 25.0
 max_value = 200.0
@@ -221,13 +219,13 @@ __meta__ = {
 
 [node name="StartGame" type="Button" parent="Options/Options"]
 margin_top = 288.0
-margin_right = 101.0
+margin_right = 93.0
 margin_bottom = 308.0
 text = "Start Game"
 
 [node name="LicenseLink" type="LinkButton" parent="Options"]
 margin_top = 542.0
-margin_right = 101.0
+margin_right = 93.0
 margin_bottom = 556.0
 size_flags_vertical = 0
 text = "License"

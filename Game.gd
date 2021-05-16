@@ -39,7 +39,7 @@ func set_score(value):
 		new_enemy_threshold += max(10, new_enemy_threshold)
 	if value == new_node_threshold:
 		on_t_zero_add_node = true
-		new_node_threshold += max(5, new_node_threshold)
+		new_node_threshold += max(5, new_node_threshold / 2)
 
 	Globals.node_speed = min(value, 250)
 
